@@ -9,7 +9,7 @@ export interface Community {
   created_at: string;
 }
 
-const fetchCommunities = async (): Promise<Community[]> => {
+export const fetchCommunities = async (): Promise<Community[]> => {
   const { data, error } = await supabase
     .from("communities")
     .select("*")
@@ -40,12 +40,12 @@ export const CommunityList = () => {
 
   return (
     <div className="max-w-5xl mx-auto space-y-4">
-      {data?.map((community, key) => (
+      {data?.map((community) => (
         <div
-          key={key}
+          key={community.id}
           className="border border-white/10 p-4 rounded hover:-translate-y-1 transition transform">
           <Link
-            to="/community"
+            to={`/community/${community.id}`}
             className="text-2xl font-bold text-purple-500 hover:underline">
             {community.name}
           </Link>

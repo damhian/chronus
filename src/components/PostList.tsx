@@ -35,8 +35,6 @@ export const PostList = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(data);
-
   return (
     <div className="flex flex-wrap gap-6 justify-center">
       {data?.map((post, key) => (
